@@ -5,16 +5,10 @@ from groq import Groq
 import os
 
 
-# ==========================================
-# LOAD API KEYS FROM .env
-# ==========================================
+
 
 load_dotenv()
 
-
-# ==========================================
-# 🤖 AI MODEL 1 - GEMINI
-# ==========================================
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-3.6-flash",
@@ -22,7 +16,6 @@ llm = ChatGoogleGenerativeAI(
 )
 
 
-# Gemini Prompt
 prompt = ChatPromptTemplate.from_template("""
 You are a professional social media content analyst.
 
@@ -46,7 +39,6 @@ Give practical and concise suggestions.
 """)
 
 
-# Gemini chain
 chain = prompt | llm
 
 
@@ -59,10 +51,6 @@ def analyze_content(text):
     return response.content
 
 
-# ==========================================
-# ⚡ AI MODEL 2 - GROQ
-# ==========================================
-
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 groq_client = Groq(
@@ -70,7 +58,6 @@ groq_client = Groq(
 )
 
 
-# Groq Prompt
 groq_prompt = """
 You are a professional social media content analyst.
 
