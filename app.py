@@ -5,10 +5,6 @@ from utils.ocr import extract_text_from_image
 from utils.analyzer import analyze_content, analyze_with_groq
 
 
-# ==============================
-# 🎨 CUSTOM UI / COLOR GRADING
-# ==============================
-
 st.markdown("""
 <style>
 
@@ -22,23 +18,19 @@ st.markdown("""
     color: white;
 }
 
-/* Main title */
 h1 {
     color: #ffffff;
     font-weight: 700;
 }
 
-/* Subheadings */
 h2, h3 {
     color: #e0e7ff;
 }
 
-/* Normal text */
 p {
     color: #dbeafe;
 }
 
-/* File uploader */
 [data-testid="stFileUploader"] {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.20);
@@ -46,7 +38,6 @@ p {
     padding: 10px;
 }
 
-/* Analyze button */
 .stButton > button {
     background: linear-gradient(
         90deg,
@@ -60,8 +51,6 @@ p {
     padding: 10px 25px;
     font-weight: 600;
 }
-
-/* Button hover effect */
 .stButton > button:hover {
     background: linear-gradient(
         90deg,
@@ -72,7 +61,6 @@ p {
     color: white;
 }
 
-/* Text area */
 textarea {
     background-color: rgba(255, 255, 255, 0.08) !important;
     color: white !important;
@@ -82,10 +70,6 @@ textarea {
 </style>
 """, unsafe_allow_html=True)
 
-
-# ==============================
-# 📱 APPLICATION
-# ==============================
 
 st.title("📱 Social Media Content Analyzer")
 
@@ -104,18 +88,10 @@ if uploaded_file is not None:
 
     file_type = uploaded_file.type
 
-    # ==============================
-    # 📄 PDF
-    # ==============================
-
     if file_type == "application/pdf":
 
         with st.spinner("Extracting text from PDF..."):
             extracted_text = extract_pdf_text(uploaded_file)
-
-    # ==============================
-    # 🖼️ IMAGE
-    # ==============================
 
     elif file_type.startswith("image/"):
 
@@ -126,11 +102,6 @@ if uploaded_file is not None:
 
         st.error("Unsupported file type.")
         extracted_text = ""
-
-
-    # ==============================
-    # 📄 SHOW EXTRACTED TEXT
-    # ==============================
 
     if extracted_text and extracted_text.strip():
 
@@ -145,10 +116,6 @@ if uploaded_file is not None:
         )
 
 
-        # ==============================
-        # 🤖 AI MODEL SELECTION
-        # ==============================
-
         st.subheader("🤖 Choose AI Preference")
 
         ai_choice = st.radio(
@@ -162,16 +129,7 @@ if uploaded_file is not None:
         )
 
 
-    
-        # 🔍 ANALYZE BUTTON
-        # ==============================
-
         if st.button("🔍 Analyze Content"):
-
-
-            # --------------------------
-            # AI MODEL 1
-            # --------------------------
 
             if ai_choice == "AI Model 1":
 
@@ -185,11 +143,6 @@ if uploaded_file is not None:
 
                 st.write(analysis)
 
-
-            # --------------------------
-            # AI MODEL 2
-            # --------------------------
-
             elif ai_choice == "AI Model 2":
 
                 with st.spinner("Analyzing with AI Model 2..."):
@@ -201,11 +154,6 @@ if uploaded_file is not None:
                 st.subheader("🧠 AI Model 2 Analysis")
 
                 st.write(analysis)
-
-
-            # --------------------------
-            # COMPARE BOTH
-            # --------------------------
 
             else:
 
@@ -228,7 +176,6 @@ if uploaded_file is not None:
                 col1, col2 = st.columns(2)
 
 
-                # AI 1 result
                 with col1:
 
                     st.markdown(
@@ -238,7 +185,6 @@ if uploaded_file is not None:
                     st.write(analysis1)
 
 
-                # AI 2 result
                 with col2:
 
                     st.markdown(
