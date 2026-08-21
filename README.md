@@ -1,6 +1,6 @@
  Social Media Content Analyzer
 
-A Streamlit-based application that extracts and analyzes social media content from PDFs and images using OCR and AI.
+A Streamlit-based application that extracts and analyzes social media content from PDFs and images using OCR and LLM.
 
 #Features
 
