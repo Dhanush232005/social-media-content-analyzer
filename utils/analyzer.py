@@ -44,6 +44,8 @@ chain = prompt | llm
 
 def analyze_content(text):
 
+    text=text[:8000]
+
     response = chain.invoke({
         "content": text
     })
