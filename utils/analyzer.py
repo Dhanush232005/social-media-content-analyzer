@@ -51,7 +51,7 @@ def analyze_content(text):
     return response.content
 
 
-GROQ_API_KEY = st.secrets("GROQ_API_KEY")
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY")
 
 groq_client = Groq(
     api_key=GROQ_API_KEY
