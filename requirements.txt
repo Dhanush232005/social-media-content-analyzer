@@ -5,4 +5,5 @@ Pillow
 python-dotenv
 langchain-google-genai
 langchain-core
+google-genai
 groq
