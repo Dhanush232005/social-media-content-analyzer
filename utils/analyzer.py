@@ -12,7 +12,7 @@ load_dotenv()
 
 
 llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         google_api_key=st.secrets["GOOGLE_API_KEY"]
 )
 
@@ -51,7 +51,7 @@ def analyze_content(text):
     return response.content
 
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = st.secrets("GROQ_API_KEY")
 
 groq_client = Groq(
     api_key=GROQ_API_KEY
